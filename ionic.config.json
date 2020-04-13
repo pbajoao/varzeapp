@@ -1,0 +1,7 @@
+{
+  "name": "varzeapp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
