@@ -1,0 +1,7 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button *ngFor="let menu of groupmenus" tab="{{menu.type}}">
+      <ion-icon name="{{menu.icon}}"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

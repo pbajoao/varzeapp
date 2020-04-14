@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="logo">
+          <div class="card">
+            <img src="">
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="loginForm" (submit)="onSubmit()">
+          <div class="group-input">
+            <div class="input">
+              <ion-item>
+                <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+              </ion-item>
+            </div>
+            <div class="input">
+              <ion-item>
+                <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+              </ion-item>
+            </div>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="group-btn">
+          <div class="btn">
+            <ion-button color="primary" expand="block" (click)="onSubmit()">Entrar</ion-button>
+          </div>
+          <div class="btn">
+            <ion-button color="default" class="btn-white" expand="full" [routerLink]="['/register']" >Criar novo registro</ion-button>
+          </div>
+          <div class="btn">
+            <a class="description p-default color-p text-center padding small" [routerLink]="['/recover-password']">Recuperar senha?</a>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
