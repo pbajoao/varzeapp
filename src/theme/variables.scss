@@ -289,6 +289,13 @@ ion-input{
   color: $color-default;
 }
 
+.group-input{
+  margin-bottom: 20px;
+  @media screen and(min-width:375px){
+      margin-bottom: 40px;    
+  }   
+}
+
 .description{
   &.p-default{
     font-size: 18px;

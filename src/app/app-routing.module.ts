@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthenticationGuard } from './core/guards/authenticated.guard';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./core/menu-footer/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./modules/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'inicio',
+    loadChildren: () => import('./core/menu-footer/tabs.module').then(m => m.TabsPageModule),
+    canActivate: [AuthenticationGuard]
   },
   {
     path: 'login',
@@ -20,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/tabs/inicio',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   }
 ];
