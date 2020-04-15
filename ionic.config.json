@@ -1,7 +1,8 @@
 {
   "name": "varzeapp",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

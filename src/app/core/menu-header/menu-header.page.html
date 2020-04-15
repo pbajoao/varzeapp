@@ -1,0 +1,27 @@
+<ion-split-pane contentId="main">
+  <!--  our side menu  -->
+  <ion-menu contentId="main">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="fase" *ngFor="let menu of groupmenus">
+          <ion-item 
+          [routerLink]="menu.type" 
+          routerDirection="root"
+          [class.active-item]="selected">
+            <ion-icon [name]="menu.icon" slot="start"></ion-icon>
+              {{menu.title}}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- the main content -->
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-split-pane>

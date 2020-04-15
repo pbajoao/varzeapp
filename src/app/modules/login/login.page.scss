@@ -11,3 +11,14 @@
       border: 12px solid #FFF;
     }
   }
+
+  .input{
+    position: relative;
+    min-height: 70px;
+    .input-invalid{
+      padding-left: 20px;
+      margin: 5px 0 0 0;
+      font-size: 14px;
+      color: var(--ion-color-danger);
+    }
+  }
