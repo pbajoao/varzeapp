@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { AuthenticationGuard } from './core/guards/authenticated.guard';
 
 const routes: Routes = [
   {
@@ -8,9 +7,8 @@ const routes: Routes = [
     loadChildren: () => import('./modules/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'inicio',
-    loadChildren: () => import('./core/menu-footer/tabs.module').then(m => m.TabsPageModule),
-    canActivate: [AuthenticationGuard]
+    path: 'tabs',
+    loadChildren: () => import('./core/menu-header/menu-header.module').then(m => m.MenuHeaderPageModule),
   },
   {
     path: 'login',
@@ -26,8 +24,12 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'inicio',
+    redirectTo: 'tabs',
     pathMatch: 'full'
+  },
+  {
+    path: 'menu-header',
+    loadChildren: () => import('./core/menu-header/menu-header.module').then( m => m.MenuHeaderPageModule)
   }
 ];
 @NgModule({

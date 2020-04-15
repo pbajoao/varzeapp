@@ -17,11 +17,18 @@
               <ion-item>
                 <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && email.invalid">
+                <span class="form-invalid" *ngIf="email.errors?.notFound">Perfil não encontrado no sistema</span>
+                <span class="form-invalid" *ngIf="email.invalid">E-mail obrigatório</span>
+              </div>
             </div>
             <div class="input">
               <ion-item>
                 <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && password.invalid">
+                <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
+              </div>
             </div>
           </div>
         </form>

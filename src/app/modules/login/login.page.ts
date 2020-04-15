@@ -8,6 +8,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
+  loading: boolean = false;
+  serverError = false;
+  submitted = false;
 
   constructor() { }
 
@@ -16,9 +19,11 @@ export class LoginPage implements OnInit {
   }
 
   onSubmit(){
+    // this.submitted = true;
     console.log(this.loginForm.value)
-    console.log(this.loginForm.valid)
   }
+
+  // login(): void { }
 
   private buildForm(): void {
     this.loginForm = new FormGroup({

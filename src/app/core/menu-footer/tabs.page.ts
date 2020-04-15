@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuFooter } from 'src/app/models/menu-footer/menu-footer.model';
+import { Menu } from '@app/models/menu/menu.model';
 
 @Component({
   selector: 'app-tabs',
@@ -8,7 +8,7 @@ import { MenuFooter } from 'src/app/models/menu-footer/menu-footer.model';
 })
 export class TabsPage implements OnInit {
 
-  groupmenus: MenuFooter[] = []
+  groupmenus: Menu[] = []
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class TabsPage implements OnInit {
 
   groupMenu() {
     this.groupmenus.push(
-      new MenuFooter('inicio', 'home-outline')
+      new Menu('inicio', 'home-outline')
     );
   }
 }
