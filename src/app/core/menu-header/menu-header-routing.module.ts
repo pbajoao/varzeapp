@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MenuHeaderPage } from './menu-header.page';
-import { AuthenticationGuard } from '../guards';
 
 const routes: Routes = [
   {
