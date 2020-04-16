@@ -1,20 +1,36 @@
-.logo{
-    width: 100%;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    @media screen and(min-width: 360px) {
-      margin-bottom: 40px;
+.header{
+  padding: 30px;
+  position: relative;
+  @media screen and(min-width: 360px){
+    padding: 40px;
+  }
+  .img-bg{
+    &:before{
+      content: url('/assets/img/bg-f.svg');
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
-    .card{
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background-color: #E5E5E5;
-      border: 12px solid #FFF;
-      @media screen and(min-width: 360px) {
-        width: 160px;
-        height: 160px;
-      }
+    &:after{
+      width: 100%;
+      height: auto;
+      content: url('/assets/img/bg-v.svg');
+      position: absolute;
+      bottom: 0;
+      right: 0;
     }
   }
+}
+
+.form-btn{
+  text-align: end;
+}
+
+.btn-register{
+  margin-top: 30px;
+  a{
+    span{
+      color: #1BB5F3;
+    }
+  }
+}

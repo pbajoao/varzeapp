@@ -23,16 +23,20 @@
 .font-semiBold{font-family: 'Nunito Sans SemiBold'!important;}
 .font-bold{font-family: 'Nunito Sans Bold'!important;}
 
+html, body{
+  font-size: 16px;
+}
+
 :root {
   /** primary **/
-  --ion-color-primary: #3A7F8F;
+  --ion-color-primary: #1BB5F3;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #4390a2;
-  --ion-color-primary-tint: #3A7F8F;
+  --ion-color-primary-shade: #2eafe3;
+  --ion-color-primary-tint: #2eafe3;
 
-  --ion-font-family: 'Nunito Sans Bold';
+  --ion-font-family: 'Nunito Sans Normal';
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -51,12 +55,12 @@
   --ion-color-tertiary-tint: #6370ff;
 
   /** success **/
-  --ion-color-success: #2dd36f;
-  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success: #1BB5F3;
+  --ion-color-success-rgb: 56, 128, 255;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #28ba62;
-  --ion-color-success-tint: #42d77d;
+  --ion-color-success-shade: #2eafe3;
+  --ion-color-success-tint: #2eafe3;
 
   /** warning **/
   --ion-color-warning: #ffc409;
@@ -91,7 +95,7 @@
   --ion-color-medium-tint: #9d9fa6;
 
   /** light **/
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #E5E5E5;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
@@ -114,6 +118,18 @@ $color-default: #9da2a5;
   text-align: center;
   display: inline-block;
   width: 100%;
+}
+
+.img{
+  max-width: 100%;
+}
+
+.z-index-full{
+  z-index: 9999;
+}
+
+.relative{
+  position: relative;
 }
 
 .padding{
@@ -142,6 +158,11 @@ ion-input{
   color: $color-default;
 }
 
+a{
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .group-input{
   @media screen and(min-width: 360px) {
     margin-bottom: 20px;
@@ -150,8 +171,8 @@ ion-input{
 
 .description{
   &.p-default{
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 16px;
+    line-height: 20px;
   }
 }
 
