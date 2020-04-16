@@ -1,2 +1,1 @@
-# varzeapp
-# varzeapp
+# Aplicativo varzea
