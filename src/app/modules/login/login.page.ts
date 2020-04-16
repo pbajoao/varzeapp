@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from '@app/core/authentication/authentication.service';
+import { LoadingService } from '@app/core/services/loading/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -7,23 +9,52 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   loginForm: FormGroup;
-  loading: boolean = false;
   serverError = false;
   submitted = false;
 
-  constructor() { }
+  constructor(
+    private loadingService: LoadingService,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.buildForm();
   }
 
-  onSubmit(){
-    // this.submitted = true;
+  async onSubmit() {
+    await this.loadingService.presentLoading();
     console.log(this.loginForm.value)
+
+    if (this.loginForm.valid) {
+      // this.login(this.loginForm.valid);
+    } else {
+      this.loadingService.removeLoading();
+      this.submitted = true;
+    }
   }
 
-  // login(): void { }
+  async login(form: any) {
+    try {
+      await this.authenticationService.login(form);
+    } catch (error) {
+      console.log(error)
+      this.validateErrorResponse(error);
+    } finally {
+       this.loadingService.removeLoading();
+    }
+  }
+
+  private validateErrorResponse(err): void {
+    switch (err.code) {
+      case 'email':
+        this.email.setErrors({ notFound: true });
+        break;
+
+      default:
+        break;
+    }
+  }
 
   private buildForm(): void {
     this.loginForm = new FormGroup({

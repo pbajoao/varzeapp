@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from '@app/core/authentication/authentication.service';
+import { LoadingService } from '@app/core/services/loading/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -9,8 +11,12 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegisterPage implements OnInit {
 
   registerForm: FormGroup;
+  loading: boolean = false;
+  submitted: boolean = false;
 
-  constructor() { }
+  constructor(
+    private loadingService: LoadingService,
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.buildForm();
@@ -20,9 +26,39 @@ export class RegisterPage implements OnInit {
     window.history.back()
   }
 
-  onRegister(){
+  async onRegister(){
+    await this.loadingService.presentLoading();
     console.log(this.registerForm.value)
-    console.log(this.registerForm.valid)
+    
+    if ( this.registerForm.valid ) {
+      // this.register(this.registerForm.valid);
+    } else {
+      this.loadingService.removeLoading();
+      this.submitted = true;
+      // this.loading = false;
+    }
+  }
+
+  async register(form: any){
+    try {
+      await this.authenticationService.register(form);      
+    } catch (error) {
+      console.log(error)
+      this.validateErrorResponse(error);
+    } finally {
+      this.loadingService.removeLoading();
+    }
+  }
+
+  private validateErrorResponse(err): void {
+    switch (err.code) {
+      case 'email':
+        this.email.setErrors({ notFound: true });
+        break;
+    
+      default:
+        break;
+    }
   }
 
   private buildForm(): void {
