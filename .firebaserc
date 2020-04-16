@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "softcompany-3282f": {
+      "hosting": {
+        "app": [
+          "softcompany-3282f"
+        ]
+      }
+    }
+  }
+}

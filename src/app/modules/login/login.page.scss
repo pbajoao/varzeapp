@@ -1,24 +1,20 @@
 .logo{
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
+    @media screen and(min-width: 360px) {
+      margin-bottom: 40px;
+    }
     .card{
-      width: 160px;
-      height: 160px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       background-color: #E5E5E5;
       border: 12px solid #FFF;
-    }
-  }
-
-  .input{
-    position: relative;
-    min-height: 70px;
-    .input-invalid{
-      padding-left: 20px;
-      margin: 5px 0 0 0;
-      font-size: 14px;
-      color: var(--ion-color-danger);
+      @media screen and(min-width: 360px) {
+        width: 160px;
+        height: 160px;
+      }
     }
   }

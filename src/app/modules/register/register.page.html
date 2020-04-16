@@ -6,37 +6,52 @@
   </ion-buttons>
   <ion-title class="color-p">Novo registro</ion-title>
 </ion-toolbar>
-
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <form [formGroup]="registerForm" (submit)="onSubmit()">
+        <form [formGroup]="registerForm" (submit)="onRegister()">
           <div class="group-input">
             <div class="input">
               <ion-item>
                 <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && nome.invalid">
+                <span class="form-invalid" *ngIf="nome.invalid">Nome obrigatório</span>
+              </div>
             </div>
             <div class="input">
               <ion-item>
                 <ion-input type="text" placeholder="Sobrenome" formControlName="sobrenome"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && sobrenome.invalid">
+                <span class="form-invalid" *ngIf="sobrenome.invalid">Sobrenome obrigatório</span>
+              </div>
             </div>
             <div class="input">
               <ion-item>
                 <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && email.invalid">
+                <span class="form-invalid" *ngIf="email.invalid">E-mail obrigatório</span>
+                <span class="form-invalid" *ngIf="email.errors.notFound">E-mail já está em uso</span>
+              </div>
             </div>
             <div class="input">
               <ion-item>
                 <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && password.invalid">
+                <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
+              </div>
             </div>
             <div class="input">
               <ion-item>
                 <ion-input type="password" placeholder="Confirmar senha" formControlName="confirmPassword"></ion-input>
               </ion-item>
+              <div class="input-invalid" *ngIf="submitted && confirmPassword.invalid">
+                <span class="form-invalid" *ngIf="confirmPassword.invalid">Senha não confere</span>
+              </div>
             </div>
           </div>
         </form>
