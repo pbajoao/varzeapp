@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
   loginForm: FormGroup;
   serverError = false;
   submitted = false;
+  isviewpassword: boolean = false;
 
   constructor(
     private loadingService: LoadingService,
@@ -20,6 +21,15 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+  }
+
+  toggleViewPassword(){
+    this.isviewpassword = !this.isviewpassword;
+    let inputpassword = document.querySelector('#ispw');
+
+    this.isviewpassword ? 
+    inputpassword.setAttribute('type', 'text') : 
+    inputpassword.setAttribute('type', 'password');
   }
 
   async onSubmit() {

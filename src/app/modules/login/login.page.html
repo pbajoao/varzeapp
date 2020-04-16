@@ -20,8 +20,12 @@
             </div>
             <div class="input">
               <ion-item>
-                <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+                <ion-input id="ispw" type="password" placeholder="Senha" formControlName="password"></ion-input>
               </ion-item>
+              <a (click)="toggleViewPassword()" class="password-control">
+                <ion-icon *ngIf="!isviewpassword" name="eye-outline"></ion-icon>
+                <ion-icon *ngIf="isviewpassword" name="eye-off-outline"></ion-icon>
+              </a>
               <div class="input-invalid" *ngIf="submitted && password.invalid">
                 <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
               </div>
