@@ -6,7 +6,7 @@ import { AuthenticationService } from '../authentication/authentication.service'
   providedIn: 'root'
 })
 
-export class AuthenticationGuard implements CanActivate {
+export class AnonymousGuard implements CanActivate {
 
   constructor(
     private router: Router,
@@ -15,8 +15,8 @@ export class AuthenticationGuard implements CanActivate {
   canActivate(): Promise<boolean> {
     return new Promise(resolve => {
       this.authenticationService.getAuth().onAuthStateChanged(user => {
-        if (!user) { this.router.navigate(['/login']) }
-        resolve(user ? true : false)
+        if (user) { this.router.navigate(['/tabs']) }
+        resolve(!user ? true : false)
       })
     });
   }

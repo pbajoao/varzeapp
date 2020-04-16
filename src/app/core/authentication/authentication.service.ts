@@ -10,6 +10,10 @@ export class AuthenticationService {
   constructor(
     private angularFireAuth: AngularFireAuth) { }
 
+  getAuth() {
+    return this.angularFireAuth.auth;
+  }
+
   login(user: LoginContext) {
     return this.angularFireAuth.auth.signInWithEmailAndPassword(user.username, user.password);
   }
@@ -17,5 +21,9 @@ export class AuthenticationService {
   register(user: LoginContext) {
     // this.angularFireAuth.auth.currentUser
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.username, user.password);
+  }
+
+  logout(){
+    return this.angularFireAuth.auth.signOut();
   }
 }
