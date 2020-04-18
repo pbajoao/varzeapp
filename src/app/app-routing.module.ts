@@ -23,8 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'tabs',
-    loadChildren: () => import('./core/menu-header/menu-header.module').then(m => m.MenuHeaderPageModule),
-    canActivate: [AuthenticationGuard]
+    // loadChildren: () => import('./core/menu-header/menu-header.module').then(m => m.MenuHeaderPageModule),
+    loadChildren: () => import('./core/menu-footer/tabs.module').then(m => m.TabsPageModule),
+    // canActivate: [AuthenticationGuard]
   },
   {
     path: '**', redirectTo: 'login', pathMatch: 'full'

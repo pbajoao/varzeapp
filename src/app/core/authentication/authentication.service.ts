@@ -19,7 +19,6 @@ export class AuthenticationService {
   }
 
   register(user: LoginContext) {
-    // this.angularFireAuth.auth.currentUser
     return this.angularFireAuth.auth.createUserWithEmailAndPassword(user.username, user.password);
   }
 

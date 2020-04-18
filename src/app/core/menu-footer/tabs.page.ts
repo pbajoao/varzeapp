@@ -18,7 +18,19 @@ export class TabsPage implements OnInit {
 
   groupMenu() {
     this.groupmenus.push(
-      new Menu('inicio', 'home-outline')
+      new Menu('home', 'pulse-outline')
+    );
+    this.groupmenus.push(
+      new Menu('Buscar', 'search-outline')
+    );
+    this.groupmenus.push(
+      new Menu('Pesquisar', 'add-circle-outline')
+    );
+    this.groupmenus.push(
+      new Menu('Mensagens', 'mail-outline')
+    );
+    this.groupmenus.push(
+      new Menu('person', 'person-outline')
     );
   }
 }

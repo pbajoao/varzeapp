@@ -1,6 +1,8 @@
 <div class="header">
   <div class="img-bg"></div>
-  <img class="relative z-index-full" src="/assets/img/soccer-img-login.svg">
+  <div class="logo">
+    <img class="relative z-index-full" src="/assets/img/soccer-img-login.svg">
+  </div>
 </div>
 
 <ion-content>
@@ -23,8 +25,8 @@
                 <ion-input id="ispw" type="password" placeholder="Senha" formControlName="password"></ion-input>
               </ion-item>
               <a (click)="toggleViewPassword()" class="password-control">
-                <ion-icon *ngIf="!isviewpassword" name="eye-outline"></ion-icon>
-                <ion-icon *ngIf="isviewpassword" name="eye-off-outline"></ion-icon>
+                <ion-icon class="color-p" *ngIf="!isviewpassword" name="eye-outline"></ion-icon>
+                <ion-icon class="color-p" *ngIf="isviewpassword" name="eye-off-outline"></ion-icon>
               </a>
               <div class="input-invalid" *ngIf="submitted && password.invalid">
                 <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>

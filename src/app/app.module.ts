@@ -8,6 +8,7 @@ import { CoreModule } from '@app/core/core.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '@env/environment';
+import { MenuHeaderPageModule } from './core/menu-header/menu-header.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,8 @@ import { environment } from '@env/environment';
     BrowserModule, 
     AppRoutingModule, 
     IonicModule.forRoot(), 
-    CoreModule, 
+    CoreModule,
+    MenuHeaderPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule
   ],

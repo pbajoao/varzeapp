@@ -19,6 +19,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'person',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../../modules/person/person.module').then(m => m.PersonPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full',

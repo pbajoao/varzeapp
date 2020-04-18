@@ -8,7 +8,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tabs',
+        path: 'home',
         children: [
           {
             path: '',
@@ -18,15 +18,25 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'person',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../../modules/person/person.module').then(m => m.PersonPageModule)
+          }
+        ]
+      },
+      {
         path: '',
-        redirectTo: '/tabs',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
