@@ -17,7 +17,8 @@ export class LoginPage implements OnInit {
 
   constructor(
     private loadingService: LoadingService,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService) { 
+    }
 
   ngOnInit() {
     this.buildForm();
