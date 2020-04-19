@@ -1,0 +1,107 @@
+[33mcommit 9628b1de13bd7053d2ed1a9b44dac50fc1f45a74[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;33mtag: list[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Thu Apr 16 14:33:47 2020 -0300
+
+    Update README.md
+
+[33mcommit 0e62bf104d8709e4de8398eb3ac26f37024d2200[m
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Thu Apr 16 13:26:28 2020 -0300
+
+    Update README.md
+
+[33mcommit 7e12b6bad5e0eb45be8eb73ccb985651a2915f63[m
+Merge: c05e319 a52fc91
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Thu Apr 16 00:14:37 2020 -0300
+
+    Merge pull request #4 from pbajoao/SCJB-004
+    
+    SCJB-004 - Router Guards + Logout
+
+[33mcommit a52fc91a527f5e9fd8f4f9d31ecabce4d39a6982[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Thu Apr 16 00:13:47 2020 -0300
+
+    SCJB-004 - Router Guards + Logout
+
+[33mcommit c05e319011f18ca48fd8e3fe356cb7f5682fbd82[m
+Merge: df82988 00c9e60
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Wed Apr 15 23:33:38 2020 -0300
+
+    Merge pull request #3 from pbajoao/SCJB-003
+    
+    SCJB-003 - Modules the login e register
+
+[33mcommit 00c9e60139d8ff1de8fd29b5e74f249ebe2c3bfd[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Wed Apr 15 23:31:59 2020 -0300
+
+    SCJB-003 - Modules the login e register
+
+[33mcommit df82988878c6d0656f71efa7e7da3d5b7a918130[m
+Merge: 4211ea8 b14b9bc
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Wed Apr 15 19:53:27 2020 -0300
+
+    Merge pull request #2 from pbajoao/SCJB-002
+    
+    SCJB - 002 - modulo core
+
+[33mcommit b14b9bc83e3a1eabeb24d57b9c452309c817e118[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Wed Apr 15 19:50:35 2020 -0300
+
+    SCJB-002 - modulo core
+
+[33mcommit 6a4d8701ecd7f38a96bace16025298eedb83b940[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Wed Apr 15 19:43:55 2020 -0300
+
+    SCJB-002 - modulo core
+
+[33mcommit 4211ea8a8c0c41436976a903ca89b3fcc52be58c[m
+Merge: 9cb123f ac2a3eb
+Author: joao-assuncao <47530467+joao-assuncao@users.noreply.github.com>
+Date:   Wed Apr 15 19:20:21 2020 -0300
+
+    Merge pull request #1 from pbajoao/SCJB-001
+    
+    SCJB-001 - melhoria na estrutura
+
+[33mcommit ac2a3eba95a46329e3e2708e97d66f472c74c3c0[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Wed Apr 15 19:17:24 2020 -0300
+
+    SCJB-001 - melhoria na estrutura
+
+[33mcommit 9cb123fd6392e0034481630524347e4d30cdded5[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Tue Apr 14 13:08:37 2020 -0300
+
+    Master
+
+[33mcommit 4dcc463f68f8ca48f3c84801ced41430bafed596[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Tue Apr 14 12:20:40 2020 -0300
+
+    first commit
+
+[33mcommit 2bf8e85382fcdb97dc7499a6919550bb630adb19[m
+Author: pbajoao <joaopaulo.jpba2015@gmail.com>
+Date:   Mon Apr 13 22:22:45 2020 -0300
+
+    Master
+
+[33mcommit 9245ff037230758bfc1cecfbea1d9f8a4a05e5a9[m
+Author: joao-assuncao <joao.assuncao@acordocerto.com.br>
+Date:   Mon Apr 13 22:13:39 2020 -0300
+
+    first commit
+
+[33mcommit 35f37de660999fd880c4232ee0506d9ba92d5ca2[m
+Author: joao-assuncao <joao.assuncao@acordocerto.com.br>
+Date:   Mon Apr 13 19:08:13 2020 -0300
+
+    Initial commit
