@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '@app/core/authentication/authentication.service';
 import { LoadingService } from '@app/core/services/loading/loading.service';
+import { EventConstants } from '@app/core/services/event/event-constants';
+import { EventHandlerService } from '@app/core/services/event/event-handler.service';
+import { LoginContext } from '@app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -16,11 +19,12 @@ export class LoginPage implements OnInit {
   isviewpassword: boolean = false;
 
   constructor(
+    private eventHandlerService: EventHandlerService,
     private loadingService: LoadingService,
-    private authenticationService: AuthenticationService) { 
-    }
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
+    this.eventHandlerService.sendEvent(EventConstants.events.login);
     this.buildForm();
   }
 
@@ -35,28 +39,29 @@ export class LoginPage implements OnInit {
 
   async onSubmit() {
     await this.loadingService.presentLoading();
-    console.log(this.loginForm.value)
 
     if (this.loginForm.valid) {
-      // this.login(this.loginForm.valid);
+      this.login(this.loginForm.value);
     } else {
       this.loadingService.removeLoading();
       this.submitted = true;
     }
   }
 
-  async login(form: any) {
+  async login(form: LoginContext) {
     try {
       await this.authenticationService.login(form);
+      this.eventHandlerService.sendEvent(EventConstants.events.loginSucesso)
     } catch (error) {
       console.log(error)
-      this.validateErrorResponse(error);
+      this.validateErrorResponse(form, error);
     } finally {
        this.loadingService.removeLoading();
     }
   }
 
-  private validateErrorResponse(err): void {
+  private validateErrorResponse(loginContext: LoginContext, err): void {
+    this.eventHandlerService.sendEvent(EventConstants.events.loginErro, { email: loginContext.email });
     switch (err.code) {
       case 'email':
         this.email.setErrors({ notFound: true });

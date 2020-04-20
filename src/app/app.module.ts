@@ -7,6 +7,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { CoreModule } from '@app/core/core.module';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { environment } from '@env/environment';
 import { MenuHeaderPageModule } from './core/menu-header/menu-header.module';
 
@@ -20,7 +21,8 @@ import { MenuHeaderPageModule } from './core/menu-header/menu-header.module';
     CoreModule,
     MenuHeaderPageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireAnalyticsModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '@app/core/authentication/authentication.service';
 import { LoadingService } from '@app/core/services/loading/loading.service';
+import { EventConstants } from '@app/core/services/event/event-constants';
+import { EventHandlerService } from '@app/core/services/event/event-handler.service';
 
 @Component({
   selector: 'app-register',
@@ -15,15 +17,13 @@ export class RegisterPage implements OnInit {
   submitted: boolean = false;
 
   constructor(
+    private eventHandlerService: EventHandlerService,
     private loadingService: LoadingService,
-    private authenticationService: AuthenticationService) { }
+    private authenticationService: AuthenticationService) {}
 
   ngOnInit() {
+    this.eventHandlerService.sendEvent(EventConstants.events.cadastro);
     this.buildForm();
-  }
-
-  goBack() {
-    window.history.back()
   }
 
   async onRegister(){
@@ -41,7 +41,8 @@ export class RegisterPage implements OnInit {
 
   async register(form: any){
     try {
-      await this.authenticationService.register(form);      
+      await this.authenticationService.register(form);   
+      this.eventHandlerService.sendEvent(EventConstants.events.cadastroComSucesso)   
     } catch (error) {
       console.log(error)
       this.validateErrorResponse(error);

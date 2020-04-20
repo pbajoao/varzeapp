@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RegisterPage } from './register.page';
 import { RouterModule } from '@angular/router';
+import { BtnBackComponentModule } from '../shared-components/btn-back/btn-back.module';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
+    BtnBackComponentModule,
     RouterModule.forChild([{ path: '', component: RegisterPage }])
   ],
   declarations: [RegisterPage]
