@@ -19,30 +19,37 @@ export class RegisterPage implements OnInit {
   constructor(
     private eventHandlerService: EventHandlerService,
     private loadingService: LoadingService,
-    private authenticationService: AuthenticationService) {}
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.eventHandlerService.sendEvent(EventConstants.events.cadastro);
     this.buildForm();
   }
 
-  async onRegister(){
+  async onRegister() {
     await this.loadingService.presentLoading();
+    this.submitted = true;
     console.log(this.registerForm.value)
-    
-    if ( this.registerForm.valid ) {
-      // this.register(this.registerForm.valid);
+    if (this.registerForm.valid) {
+
+      if (this.registerForm.value.password != this.registerForm.value.confirmPassword) {
+        this.confirmPassword.setErrors({ notFound: true });
+        this.loadingService.removeLoading();
+      } else {
+        this.register(this.registerForm.value);
+      }
     } else {
       this.loadingService.removeLoading();
-      this.submitted = true;
-      // this.loading = false;
+      this.loading = false;
     }
   }
 
-  async register(form: any){
+  async register(form: any) {
     try {
-      await this.authenticationService.register(form);   
-      this.eventHandlerService.sendEvent(EventConstants.events.cadastroComSucesso)   
+      const user = await this.authenticationService.register(form);
+      const formCurrent = this.removeEmailPassword();
+      await this.authenticationService.usuarios(formCurrent, user)
+      this.eventHandlerService.sendEvent(EventConstants.events.cadastroComSucesso)
     } catch (error) {
       console.log(error)
       this.validateErrorResponse(error);
@@ -53,13 +60,25 @@ export class RegisterPage implements OnInit {
 
   private validateErrorResponse(err): void {
     switch (err.code) {
-      case 'email':
+      case 'auth/argument-error':
         this.email.setErrors({ notFound: true });
         break;
-    
+      case 'auth/weak-password': 
+        this.password.setErrors({invalid: true})
       default:
         break;
     }
+  }
+
+
+  removeEmailPassword(){
+    const formCurrent = Object.assign({}, this.registerForm.value);
+
+    delete formCurrent.email;
+    delete formCurrent.password;
+    delete formCurrent.confirmPassword;
+
+    return formCurrent;
   }
 
   private buildForm(): void {
@@ -69,8 +88,8 @@ export class RegisterPage implements OnInit {
       email: new FormControl('', { validators: [Validators.required, Validators.email] }),
       password: new FormControl('', { validators: [Validators.required] }),
       confirmPassword: new FormControl('', { validators: [Validators.required] }),
-      ativo: new FormControl(''),
-      data: new FormControl(new Date())
+      dataCadastro: new FormControl(new Date()),
+      dataNascimento: new FormControl('', { validators: [Validators.required] })
     });
   }
 
@@ -79,4 +98,5 @@ export class RegisterPage implements OnInit {
   get email() { return this.registerForm.get('email'); }
   get password() { return this.registerForm.get('password'); }
   get confirmPassword() { return this.registerForm.get('confirmPassword'); }
+  get dataNascimento() { return this.registerForm.get('dataNascimento'); }
 }

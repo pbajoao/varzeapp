@@ -28,47 +28,51 @@ export class LoginPage implements OnInit {
     this.buildForm();
   }
 
-  toggleViewPassword(){
+  toggleViewPassword() {
     this.isviewpassword = !this.isviewpassword;
     let inputpassword = document.querySelector('#ispw');
 
-    this.isviewpassword ? 
-    inputpassword.setAttribute('type', 'text') : 
-    inputpassword.setAttribute('type', 'password');
+    this.isviewpassword ?
+      inputpassword.setAttribute('type', 'text') :
+      inputpassword.setAttribute('type', 'password');
+  }
+
+  onSubmitGmail() {
+    this.authenticationService.googleLogin()
+      .then(
+        user => {
+          this.authenticationService.authGoogle(user);
+        })
+      .catch( (error) => console.log('erro ao logar' + error))
   }
 
   async onSubmit() {
     await this.loadingService.presentLoading();
-
+    this.submitted = true;
     if (this.loginForm.valid) {
       this.login(this.loginForm.value);
     } else {
       this.loadingService.removeLoading();
-      this.submitted = true;
     }
   }
 
   async login(form: LoginContext) {
     try {
       await this.authenticationService.login(form);
-      this.eventHandlerService.sendEvent(EventConstants.events.loginSucesso)
+      this.eventHandlerService.sendEvent(EventConstants.events.loginSucesso);
     } catch (error) {
       console.log(error)
       this.validateErrorResponse(form, error);
     } finally {
-       this.loadingService.removeLoading();
+      this.loadingService.removeLoading();
     }
   }
 
-  private validateErrorResponse(loginContext: LoginContext, err): void {
+  private validateErrorResponse(loginContext: LoginContext, err: any): void {
     this.eventHandlerService.sendEvent(EventConstants.events.loginErro, { email: loginContext.email });
-    switch (err.code) {
-      case 'email':
-        this.email.setErrors({ notFound: true });
-        break;
-
-      default:
-        break;
+    const expr: string = err.code;
+    if (expr == 'auth/user-not-found') {
+      this.email.setErrors({ notFound: true });
     }
   }
 

@@ -1,53 +1,65 @@
 <div class="header">
-  <div class="img-bg"></div>
   <div class="logo">
-    <img class="relative z-index-full" src="/assets/img/soccer-img-login.svg">
+    <img class="img" src="/assets/img/soccer-img-login.svg">
   </div>
+  <p class="paragraph title text-center">Bem vindo(a)</p>
 </div>
 
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <form [formGroup]="loginForm" (submit)="onSubmit()">
-          <div class="group-input">
-            <div class="input">
-              <ion-item>
-                <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && email.invalid">
-                <span class="form-invalid" *ngIf="email.errors?.notFound">Perfil não encontrado no sistema</span>
-                <span class="form-invalid" *ngIf="email.invalid">E-mail obrigatório</span>
+        <div class="container-fluid">
+          <form [formGroup]="loginForm" (submit)="onSubmit()">
+            <div class="group-input">
+              <div class="input">
+                <ion-item>
+                  <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && email.invalid">
+                  <span class="form-invalid" *ngIf="!email.errors?.notFound">E-mail obrigatório</span>
+                  <span class="form-invalid" *ngIf="email.errors?.notFound">Perfil não encontrado no sistema</span>
+                </div>
+              </div>
+              <div class="input">
+                <ion-item>
+                  <ion-input id="ispw" type="password" placeholder="Senha" formControlName="password"></ion-input>
+                </ion-item>
+                <a (click)="toggleViewPassword()" class="password-control">
+                  <ion-icon class="color-p" *ngIf="!isviewpassword" name="eye-outline"></ion-icon>
+                  <ion-icon class="color-p" *ngIf="isviewpassword" name="eye-off-outline"></ion-icon>
+                </a>
+                <div class="input-invalid" *ngIf="submitted && password.invalid">
+                  <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
+                </div>
+              </div>
+              <div class="form-btn">
+                <a class="description color-p" [routerLink]="['/recover-password']">Recuperar senha?</a>
               </div>
             </div>
-            <div class="input">
-              <ion-item>
-                <ion-input id="ispw" type="password" placeholder="Senha" formControlName="password"></ion-input>
-              </ion-item>
-              <a (click)="toggleViewPassword()" class="password-control">
-                <ion-icon class="color-p" *ngIf="!isviewpassword" name="eye-outline"></ion-icon>
-                <ion-icon class="color-p" *ngIf="isviewpassword" name="eye-off-outline"></ion-icon>
-              </a>
-              <div class="input-invalid" *ngIf="submitted && password.invalid">
-                <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
-              </div>
-            </div>
-            <div class="form-btn">
-              <a class="description color-p" [routerLink]="['/recover-password']">Recuperar senha?</a>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <div class="group-btn">
-          <div class="btn">
-            <ion-button color="primary" expand="block" (click)="onSubmit()">Entrar</ion-button>
-          </div>
-          <div class="btn-register">
-            <a class="text-center color-p" [routerLink]="['/register']">Não possui uma conta? <span>Inscrever-se</span></a>
-            <!-- <ion-button color="default" class="btn-white" expand="full"  >Novo registro</ion-button> -->
+        <div class="container-fluid">
+          <div class="group-btn">
+            <div class="btn">
+              <ion-button color="primary" expand="block" (click)="onSubmit()">Acessar</ion-button>
+            </div>
+            <div class="line"><span>ou</span></div>
+            <div class="btn">
+              <!-- <button class="btn-google">Acessar com google</button> -->
+              <ion-button color="warning" expand="block" (click)="onSubmitGmail()">
+                <span class="icon-gmail">
+                  <ion-icon name="logo-google"></ion-icon>
+                </span>Acessar com Google</ion-button>
+            </div>
+            <div class="btn-register">
+              <a class="text-center color-p" [routerLink]="['/register']">Não possui uma conta?
+                <span>Inscrever-se</span></a>
+            </div>
           </div>
         </div>
       </ion-col>

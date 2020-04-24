@@ -1,75 +1,82 @@
-<ion-toolbar class="title-register">
+<ion-toolbar class="padding-header" color="tertiary">
   <ion-buttons slot="start">
     <app-btn-back></app-btn-back>
   </ion-buttons>
-  <ion-title class="color-p">Novo registro</ion-title>
+  <ion-title class="paragraph title-header">Cadastro</ion-title>
+  <ion-buttons slot="end" (click)="onRegister()">
+    <ion-button>
+      <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>
 
 <ion-content>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <form [formGroup]="registerForm" (submit)="onRegister()">
-          <div class="group-input">
-            <div class="input">
-              <ion-item>
-                <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && nome.invalid">
-                <span class="form-invalid" *ngIf="nome.invalid">Nome obrigatório</span>
+        <div class="container-fluid">
+          <ion-list>
+            <form [formGroup]="registerForm" (submit)="onRegister()">
+              <div class="group-input">
+                <div class="input">
+                  <ion-item>
+                    <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && nome.invalid">
+                    <span class="form-invalid" *ngIf="nome.invalid">Nome obrigatório</span>
+                  </div>
+                </div>
+                <div class="input">
+                  <ion-item>
+                    <ion-input type="text" placeholder="Sobrenome" formControlName="sobrenome"></ion-input>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && sobrenome.invalid">
+                    <span class="form-invalid" *ngIf="sobrenome.invalid">Sobrenome obrigatório</span>
+                  </div>
+                </div>
+                <div class="input">
+                  <ion-item>
+                    <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && email.invalid">
+                    <span class="form-invalid" *ngIf="!email.errors.notFound">E-mail obrigatório</span>
+                    <span class="form-invalid" *ngIf="email.errors.notFound">E-mail já está em uso</span>
+                  </div>
+                </div>
+                <div class="input">
+                  <ion-item>
+                    <ion-datetime displayFormat="DD MM YY" min="1960-01-01" max="2008-12-31"
+                      placeholder="Data de nascimento" formControlName="dataNascimento"></ion-datetime>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && dataNascimento.invalid">
+                    <span class="form-invalid" *ngIf="dataNascimento.invalid">Data obrigatória</span>
+                  </div>
+                </div>
+                <div class="input">
+                  <ion-item>
+                    <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && password.invalid">
+                    <span class="form-invalid" *ngIf="!password.errors.invalid">Senha obrigatória</span>
+                    <span class="form-invalid" *ngIf="password.errors.invalid">A senha deve conter no mínimo 6
+                      caracteres</span>
+                  </div>
+                </div>
+                <div class="input">
+                  <ion-item>
+                    <ion-input type="password" placeholder="Confirmar senha" formControlName="confirmPassword">
+                    </ion-input>
+                  </ion-item>
+                  <div class="input-invalid" *ngIf="submitted && confirmPassword.invalid">
+                    <span class="form-invalid" *ngIf="!confirmPassword.errors.notFound">Senha obrigatória</span>
+                    <span class="form-invalid" *ngIf="confirmPassword.errors.notFound">Senha não confere</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="input">
-              <ion-item>
-                <ion-input type="text" placeholder="Sobrenome" formControlName="sobrenome"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && sobrenome.invalid">
-                <span class="form-invalid" *ngIf="sobrenome.invalid">Sobrenome obrigatório</span>
-              </div>
-            </div>
-            <div class="input">
-              <ion-item>
-                <ion-input type="email" placeholder="E-mail" formControlName="email"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && email.invalid">
-                <span class="form-invalid" *ngIf="email.invalid">E-mail obrigatório</span>
-                <span class="form-invalid" *ngIf="email.errors.notFound">E-mail já está em uso</span>
-              </div>
-            </div>
-            <div class="input">
-              <ion-item>
-                <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && password.invalid">
-                <span class="form-invalid" *ngIf="password.invalid">Senha obrigatória</span>
-              </div>
-            </div>
-            <div class="input">
-              <ion-item>
-                <ion-input type="password" placeholder="Confirmar senha" formControlName="confirmPassword"></ion-input>
-              </ion-item>
-              <div class="input-invalid" *ngIf="submitted && confirmPassword.invalid">
-                <span class="form-invalid" *ngIf="confirmPassword.invalid">Senha não confere</span>
-              </div>
-            </div>
-          </div>
-        </form>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div class="group-btn">
-          <div class="btn">
-            <ion-button color="primary" expand="block" (click)="onRegister()">Inscrever-se</ion-button>
-          </div>
+            </form>
+          </ion-list>
         </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <div>
-          <img src="" alt="">
-        </div>
+
       </ion-col>
     </ion-row>
   </ion-grid>
