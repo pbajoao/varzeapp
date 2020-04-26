@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar class="padding-header" color="tertiary">
+    <ion-buttons slot="start">
+      <app-btn-back></app-btn-back>
+    </ion-buttons>
+    <ion-title class="paragraph title-header">Dados do jogador</ion-title>
+    <ion-buttons slot="end" (click)="onSave()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <section>
+          <form [formGroup]="formPlay" (submit)="onSave()">
+            <div class="group-input">
+              <div class="input">
+                <ion-item>
+                  <ion-input type="text" placeholder="Apelido" formControlName="apelido"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && apelido.invalid">
+                  <span class="form-invalid" *ngIf="apelido.invalid">Apelido obrigatório</span>
+                </div>
+              </div>
+              <div class="input">
+                <ion-item>
+                  <ion-input type="text" placeholder="Altura" formControlName="altura"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && altura.invalid">
+                  <span class="form-invalid" *ngIf="altura.invalid">Altura obrigatória</span>
+                </div>
+              </div>
+              <div class="input">
+                <ion-item>
+                  <ion-input type="text" placeholder="Pé de chute" formControlName="pe"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && pe.invalid">
+                  <span class="form-invalid" *ngIf="pe.invalid">Pé obrigatório</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </section>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

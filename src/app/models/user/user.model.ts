@@ -1,9 +1,10 @@
 export class User {
     id?: number;
-    nome?: string;
-    sobreNome?: string;
+    name?: string;
+    lastName?: string;
     email?: string;
-    data?: any;
+    birth?: string;
+    dateRegister?: string;
     ativo?: string;
-  }
+}
   

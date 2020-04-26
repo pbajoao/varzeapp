@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar class="padding-header" color="tertiary">
+    <ion-buttons slot="start">
+      <app-btn-back></app-btn-back>
+    </ion-buttons>
+    <ion-title class="paragraph title-header">Dados pessoais</ion-title>
+    <ion-buttons slot="end" (click)="onSave()">
+      <ion-button>
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="datePerson else loading">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <section>
+          <form [formGroup]="formPerson" (submit)="onSave()">
+            <div class="group-input">
+              <div class="input">
+                <ion-item>
+                  <ion-input type="text" placeholder="Nome" formControlName="name"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && name.invalid">
+                  <span class="form-invalid" *ngIf="name.invalid">Nome obrigatório</span>
+                </div>
+              </div>
+              <div class="input">
+                <ion-item>
+                  <ion-input type="text" placeholder="Sobrenome" formControlName="lastName"></ion-input>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && lastName.invalid">
+                  <span class="form-invalid" *ngIf="lastName.invalid">Sobrenome obrigatório</span>
+                </div>
+              </div>
+              <div class="input">
+                <ion-item>
+                  <ion-datetime displayFormat="DD MM YY" min="1960-01-01" max="2008-12-31"
+                    placeholder="Data de nascimento" formControlName="birth"></ion-datetime>
+                </ion-item>
+                <div class="input-invalid" *ngIf="submitted && birth.invalid">
+                  <span class="form-invalid" *ngIf="birth.invalid">Data obrigatória</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </section>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ng-template #loading>
+  <div class="center-center">
+    <div class="loading"></div>
+  </div>
+</ng-template>

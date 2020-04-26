@@ -21,10 +21,10 @@ export class TabsPage implements OnInit {
       new Menu('home', 'football-outline')
     );
     this.groupmenus.push(
-      new Menu('buscar', 'search-outline')
+      new Menu('search', 'search-outline')
     );
     this.groupmenus.push(
-      new Menu('notificacao', 'notifications-outline')
+      new Menu('notification', 'notifications-outline')
     );
     this.groupmenus.push(
       new Menu('person', 'person-outline')

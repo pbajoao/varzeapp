@@ -1,37 +1,87 @@
-<ion-content>
-  <section class="bg-page">
-    <ion-grid>
-      <ion-row>
-        <div class="header">
-          <div class="menu"></div>
-          <div class="person">
-            <div class="card-person">
-              <div class="informations">
-                <div class="card-img">
-                  <img src="/assets/img/47530467.jpg">
-                </div>
-                <p>João Paulo Brito</p>
-                <p>Atacante, 26 anos</p>
-                <p>Caieiras, São Paulo - SP</p>
-              </div>
-            </div>
+<ion-content *ngIf="datePerson else loading">
+  <section>
+    <div class="bg-person">
+      <div class="menu menu-person">
+        <span class="btn-menu"></span>
+        <span class="btn-menu">
+          <ion-buttons slot="end" (click)="navigateEditPerson()">
+            <ion-button>
+              <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </span>
+      </div>
+      <div class="description-person">
+        <div class="box-person">
+          <div class="img-person">
+            <img class="img" src="/assets/img/unnamed.jpg">
           </div>
-          <div>
-            <img class="img-bg-header" src="/assets/img/highway-3392100_1920.jpg">
+          <div class="informations-person">
+            <span class="paragraph subtitle font-weight-600 color-base">{{datePerson.name}} {{datePerson?.lastName}}</span>
+            <span class="paragraph simple color-base">{{datePlay.position}}, {{age}} anos</span>
           </div>
         </div>
-      </ion-row>
-      <ion-row>
-        <div class="btn-actions">
-
+      </div>
+      <div class="bg-img-person">
+        <img src="/assets/img/bg-football.jpg">
+      </div>
+    </div>
+    <div class="height-space"></div>
+    <div>
+      <div class="box-list">
+        <p class="title-box">Dados pessoais</p>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Nome</div>
+          <div class="color-base paragraph simple ">{{datePerson.name}}</div>
         </div>
-      </ion-row>
-
-      <ion-row>
-        <div class="content-details">
-          <img src="/assets/img/player-illustration.svg">
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Sobrenome</div>
+          <div class="color-base paragraph simple ">{{datePerson.lastName}}</div>
         </div>
-      </ion-row>
-    </ion-grid>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Nascimento</div>
+          <div class="color-base paragraph simple ">{{datePerson.birth | date: 'dd/MM/yyyy' }}</div>
+        </div>
+      </div>
+
+      <div class="box-list">
+        <p class="title-box">Dados do jogador</p>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Clube atual</div>
+          <div class="color-base paragraph simple ">{{datePlay.club}}</div>
+        </div>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Apelido</div>
+          <div class="color-base paragraph simple ">{{datePlay.nick}}</div>
+        </div>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Posição</div>
+          <div class="color-base paragraph simple ">{{datePlay.position}}</div>
+        </div>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Altura</div>
+          <div class="color-base paragraph simple ">{{datePlay.height}}</div>
+        </div>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">Pé</div>
+          <div class="color-base paragraph simple ">{{datePlay.foot}}</div>
+        </div>
+      </div>
+
+      <div class="box-list">
+        <p class="title-box">Clube</p>
+        <div class="box-list-line">
+          <div class="color-base paragraph simple font-weight-600">{{dateClub.date}}</div>
+          <div class="color-base paragraph simple ">{{dateClub.name}}</div>
+        </div>
+      </div>
+    </div>
   </section>
+
 </ion-content>
+
+<ng-template #loading>
+  <div class="center-center">
+    <div class="loading"></div>
+  </div>
+</ng-template>

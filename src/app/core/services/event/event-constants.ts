@@ -1,5 +1,6 @@
 export const EventConstants = {
 
+    
     events: {
         erro: 'Erro',
         login: 'Login',
@@ -7,10 +8,14 @@ export const EventConstants = {
         loginErro: 'Erro de login',
         cadastro: 'Cadastro',
         cadastroComSucesso: 'Cadastro com sucesso',
+        alterarDados: 'Editar dados',
+        alterarDadospessoais: 'Dados pessoais - Sucesso',
+        alterarDadosDoJogador: 'Dados do jogador - Sucesso',
+        alterarSenha: 'Esqueci minha senha - Sucesso',
         esqueciSenha: 'Esqueci minha senha',
-        esqueciSenhaSucesso: 'Esqueci minha senha - Sucesso',
         esqueciSenhaErro: 'Esqueci minha senha - Erro',
         home: 'Feed',
-        clickSair: 'Click - Sair',        
+        clickSair: 'Click - Sair',     
+        esqueciSenhaSucesso: 'Esqueci minha senha - Sucesso',
     }
 };

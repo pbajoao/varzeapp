@@ -4,6 +4,7 @@ import { AuthenticationService } from '@app/core/authentication/authentication.s
 import { LoadingService } from '@app/core/services/loading/loading.service';
 import { EventConstants } from '@app/core/services/event/event-constants';
 import { EventHandlerService } from '@app/core/services/event/event-handler.service';
+import { ApiService } from '@app/core/http/api.service';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterPage implements OnInit {
   constructor(
     private eventHandlerService: EventHandlerService,
     private loadingService: LoadingService,
+    private apiService: ApiService,
     private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
@@ -29,7 +31,6 @@ export class RegisterPage implements OnInit {
   async onRegister() {
     await this.loadingService.presentLoading();
     this.submitted = true;
-    console.log(this.registerForm.value)
     if (this.registerForm.valid) {
 
       if (this.registerForm.value.password != this.registerForm.value.confirmPassword) {
@@ -48,7 +49,7 @@ export class RegisterPage implements OnInit {
     try {
       const user = await this.authenticationService.register(form);
       const formCurrent = this.removeEmailPassword();
-      await this.authenticationService.usuarios(formCurrent, user)
+      await this.apiService.usuarios(formCurrent, user)
       this.eventHandlerService.sendEvent(EventConstants.events.cadastroComSucesso)
     } catch (error) {
       console.log(error)
@@ -83,20 +84,20 @@ export class RegisterPage implements OnInit {
 
   private buildForm(): void {
     this.registerForm = new FormGroup({
-      nome: new FormControl('', { validators: [Validators.required] }),
-      sobrenome: new FormControl('', { validators: [Validators.required] }),
+      name: new FormControl('', { validators: [Validators.required] }),
+      lastName: new FormControl('', { validators: [Validators.required] }),
       email: new FormControl('', { validators: [Validators.required, Validators.email] }),
       password: new FormControl('', { validators: [Validators.required] }),
       confirmPassword: new FormControl('', { validators: [Validators.required] }),
-      dataCadastro: new FormControl(new Date()),
-      dataNascimento: new FormControl('', { validators: [Validators.required] })
+      dateRegister: new FormControl(new Date()),
+      birth: new FormControl('', { validators: [Validators.required] })
     });
   }
 
-  get nome() { return this.registerForm.get('nome'); }
-  get sobrenome() { return this.registerForm.get('sobrenome'); }
+  get name() { return this.registerForm.get('name'); }
+  get lastName() { return this.registerForm.get('lastName'); }
   get email() { return this.registerForm.get('email'); }
   get password() { return this.registerForm.get('password'); }
   get confirmPassword() { return this.registerForm.get('confirmPassword'); }
-  get dataNascimento() { return this.registerForm.get('dataNascimento'); }
+  get birth() { return this.registerForm.get('birth'); }
 }

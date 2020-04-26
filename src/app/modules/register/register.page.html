@@ -20,18 +20,18 @@
               <div class="group-input">
                 <div class="input">
                   <ion-item>
-                    <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+                    <ion-input type="text" placeholder="Nome" formControlName="name"></ion-input>
                   </ion-item>
-                  <div class="input-invalid" *ngIf="submitted && nome.invalid">
-                    <span class="form-invalid" *ngIf="nome.invalid">Nome obrigatório</span>
+                  <div class="input-invalid" *ngIf="submitted && name.invalid">
+                    <span class="form-invalid" *ngIf="name.invalid">Nome obrigatório</span>
                   </div>
                 </div>
                 <div class="input">
                   <ion-item>
-                    <ion-input type="text" placeholder="Sobrenome" formControlName="sobrenome"></ion-input>
+                    <ion-input type="text" placeholder="Sobrenome" formControlName="lastName"></ion-input>
                   </ion-item>
-                  <div class="input-invalid" *ngIf="submitted && sobrenome.invalid">
-                    <span class="form-invalid" *ngIf="sobrenome.invalid">Sobrenome obrigatório</span>
+                  <div class="input-invalid" *ngIf="submitted && lastName.invalid">
+                    <span class="form-invalid" *ngIf="lastName.invalid">Sobrenome obrigatório</span>
                   </div>
                 </div>
                 <div class="input">
@@ -46,10 +46,10 @@
                 <div class="input">
                   <ion-item>
                     <ion-datetime displayFormat="DD MM YY" min="1960-01-01" max="2008-12-31"
-                      placeholder="Data de nascimento" formControlName="dataNascimento"></ion-datetime>
+                      placeholder="Data de nascimento" formControlName="birth"></ion-datetime>
                   </ion-item>
-                  <div class="input-invalid" *ngIf="submitted && dataNascimento.invalid">
-                    <span class="form-invalid" *ngIf="dataNascimento.invalid">Data obrigatória</span>
+                  <div class="input-invalid" *ngIf="submitted && birth.invalid">
+                    <span class="form-invalid" *ngIf="birth.invalid">Data obrigatória</span>
                   </div>
                 </div>
                 <div class="input">

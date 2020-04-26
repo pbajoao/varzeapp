@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="padding-header" color="tertiary">
+    <ion-buttons slot="start">
+      <app-btn-back></app-btn-back>
+    </ion-buttons>
+    <ion-title class="paragraph title-header">Editar perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <section>
+    <div class="group-btns">
+      <a class="btn-g" *ngFor="let btn of groupbtn" [routerLink]="['/tabs/person/', btn.href]">
+        <div>
+          <ion-icon name="{{btn.icon}}"></ion-icon>
+        </div>
+        <div>{{btn.name}}</div>
+      </a>
+    </div>
+  </section>
+</ion-content>

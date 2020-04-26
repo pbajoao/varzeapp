@@ -23,7 +23,7 @@
 .font-semiBold{font-family: 'Nunito Sans SemiBold'!important;}
 .font-bold{font-family: 'Nunito Sans Bold'!important;}
 
-html, body, ion-input, ion-button{
+html, body, ion-input{
   font-size: 18px!important;
 }
 
@@ -142,14 +142,18 @@ $color-default: #9da2a5;
     padding: 12px 0;
   }
 }
-
+.btn-menu ion-icon{
+  color: #fff;
+}
 ion-item{
   --padding-start: 0;
 }
 ion-input{
   color: $color-default!important;
 }
-
+.menu ion-icon{
+  font-size: 1.2em;
+}
 .btn{
   padding: 5px 2px;
 }
@@ -201,7 +205,7 @@ a{
 }
 
 .bg-page{
-  background-color: #E5E5E5;
+  background-color: #F0EFF3;
   width: 100%;
   height: 100%;
 }
@@ -209,6 +213,13 @@ a{
 .container-fluid{
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.bg-white{
+  background-color: #FFF;
+}
+.color-base{
+  color: #9B9B9B;
 }
 
 .paragraph{
@@ -225,6 +236,15 @@ a{
   &.title-header{
     font-size: 20px;
     color: #FFFFFF;
+  }
+  &.subtitle{
+    font-size: 20px;
+  }
+  &.simple{
+    font-size: 16px;
+  }
+  &.font-weight-600{
+    font-weight: 600;
   }
 }
 
@@ -255,11 +275,36 @@ a{
 }
 
 .padding-header{
-  padding: 8px 0;
+  padding: 8px 0!important;
 }
 
 ion-datetime {
   padding-left: 0;
   font-weight: 600;
   color: #dadcdd;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%);
+}
+
+.loading {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  border: .25rem solid #FFF;
+  border-top-color: #E5E5E5;
+  animation: spin 1s infinite linear;
 }

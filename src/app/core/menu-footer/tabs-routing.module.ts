@@ -28,21 +28,36 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'notification',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../../modules/notification/notification.module').then(m => m.NotificationPageModule)
+          }
+        ]
+      },
+      {
+        path: 'search',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../../modules/search/search.module').then(m => m.SearchPageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: '/tabs/home',
-    pathMatch: 'full'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-})
-export class TabsPageRoutingModule {}
+      imports: [RouterModule.forChild(routes)],
+      exports: [RouterModule]
+    })
+export class TabsPageRoutingModule { }

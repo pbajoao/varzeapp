@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { PersonPage } from './person.page';
-import { PersonPageRoutingModule } from './person-routing.module.module';
+import { FilterSearchPage } from './filter-search.page';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PersonPageRoutingModule
+    RouterModule.forChild([{ path: '', component: FilterSearchPage }])
   ],
-  declarations: [PersonPage]
+  declarations: [FilterSearchPage]
 })
-export class PersonPageModule { }
+export class FilterSearchPageModule {}
