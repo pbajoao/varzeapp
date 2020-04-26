@@ -12,8 +12,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="datePerson else loading">
-  <ion-grid>
+<ion-content>
+  <ion-grid *ngIf="datePerson else loading">
     <ion-row>
       <ion-col size="12">
         <section>
@@ -50,10 +50,12 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
 
-<ng-template #loading>
-  <div class="center-center">
-    <div class="loading"></div>
-  </div>
-</ng-template>
+  <ng-template #loading>
+    <div class="loading-form">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ng-template>
+</ion-content>
